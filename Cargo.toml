@@ -6,6 +6,9 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-base64 = "0.21.4"
+base64-url = "2.0.0"
+#eyra = "0.15.3"
+html_parser = "0.7.0"
 libflate = "2.0.0"
 rocket = "=0.5.0-rc.3"
+rocket_dyn_templates = { version = "0.1.0-rc.3", features = ["tera"] }
