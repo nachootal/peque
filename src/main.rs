@@ -1,4 +1,9 @@
-//Use following de/coder: https://base64.guru/standards/base64url/encode
+//! Serve webpages from the URL!
+//!
+//! This crate serves either a landing page when called to the base url or takes the rest of the
+//! url as a base64 gzipped web page and serves it.
+//!
+//Use following de/encoder: https://base64.guru/standards/base64url/encode
 use rocket::http::Status;
 use rocket::response::{content, status};
 use rocket::get;
@@ -13,7 +18,7 @@ fn websites(base64_gzip_website: &str) -> status::Custom<content::RawHtml<String
     // Decode from BASE64
     match base64_url::decode(base64_gzip_website) {
         Ok(gzip_website) => {
-            // Check the content of the website - GZIP or Plain
+            // Check the content of the website - It can be GZIP or assume Plain
             match Decoder::new(&gzip_website[..]) {
                 Ok(mut decoder) => {
                     let mut website = String::new();
